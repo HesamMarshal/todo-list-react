@@ -6,9 +6,6 @@ const TodoFrom = (props) => {
     setInput(e.target.value);
   };
 
-  const clickHandler = () => {
-    console.log("Todo Form");
-  };
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -17,24 +14,13 @@ const TodoFrom = (props) => {
       alert("Enter todo");
       return;
     }
-    // props.addToDoHandler(input);
-
-    const newTodo = {
-      id: Math.floor(Math.random() * 1000),
-      text: input,
-      isCompleted: false,
-    };
-
-    props.setTodos([...props.todos, newTodo]);
+    props.addToDoHandler(input);
     setInput("");
   };
   return (
     <form onSubmit={submitHandler}>
       <input type="text" value={input} onChange={changeHandle} />
-      <button onClick={clickHandler} type="submit">
-        {" "}
-        Add{" "}
-      </button>
+      <button type="submit"> Add </button>
     </form>
   );
 };
