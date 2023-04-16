@@ -17,7 +17,15 @@ const TodoFrom = (props) => {
       alert("Enter todo");
       return;
     }
-    props.addToDoHandler(input);
+    // props.addToDoHandler(input);
+
+    const newTodo = {
+      id: Math.floor(Math.random() * 1000),
+      text: input,
+      isCompleted: false,
+    };
+
+    props.setTodos([...props.todos, newTodo]);
     setInput("");
   };
   return (
