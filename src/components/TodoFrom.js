@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const TodoFrom = () => {
-  const [todo, setTodo] = useState("");
+const TodoFrom = (props) => {
+  const [input, setInput] = useState("");
   const changeHandle = (e) => {
-    setTodo(e.target.value);
+    setInput(e.target.value);
   };
 
   const clickHandler = () => {
@@ -11,11 +11,18 @@ const TodoFrom = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // add todo to todos
+
+    // add input to todos
+    if (!input) {
+      alert("Enter todo");
+      return;
+    }
+    props.addToDoHandler(input);
+    setInput("");
   };
   return (
     <form onSubmit={submitHandler}>
-      <input type="text" value={todo} onChange={changeHandle} />
+      <input type="text" value={input} onChange={changeHandle} />
       <button onClick={clickHandler} type="submit">
         {" "}
         Add{" "}
