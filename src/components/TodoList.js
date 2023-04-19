@@ -1,6 +1,14 @@
+import { useState } from "react";
 import Todo from "./Todo";
+import TodoFrom from "./TodoFrom";
 
-const TodoList = ({ todos, onComplete, onDelete }) => {
+const TodoList = ({ todos, onComplete, onDelete, onUpdate }) => {
+  const [edit, setEdit] = useState({ id: null, text: "", isCompleted: false });
+
+  const editTodo = (newValue) => {
+    onUpdate(edit.id, newValue);
+    setEdit({ id: null, text: "" });
+  };
   const renderTodos = () => {
     if (todos.length === 0) return <p>add some todos</p>;
 
@@ -11,12 +19,17 @@ const TodoList = ({ todos, onComplete, onDelete }) => {
           todo={todo}
           onComplete={() => onComplete(todo.id)}
           onDelete={() => onDelete(todo.id)}
+          onEdit={() => setEdit(todo)}
         />
       );
     });
   };
 
-  return <div>{renderTodos()}</div>;
+  return (
+    <div>
+      {edit.id ? <TodoFrom submitTodo={editTodo} edit={edit} /> : renderTodos()}
+    </div>
+  );
 };
 
 export default TodoList;
