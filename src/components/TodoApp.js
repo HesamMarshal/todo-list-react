@@ -14,11 +14,41 @@ const TodoApp = () => {
 
     setTodos([...todos, newTodo]);
   };
+
+  const completeTodo = (id) => {
+    const index = todos.findIndex((t) => t.id === id);
+
+    // clone : To do not  mutate
+    const completedTodo = { ...todos[index] };
+    completedTodo.isCompleted = !completedTodo.isCompleted;
+
+    // clone : todos
+    const updatedTodos = [...todos];
+    updatedTodos[index] = completedTodo;
+    setTodos(updatedTodos);
+  };
+
+  const deleteHandler = (id) => {
+    // approach 1
+    const index = todos.findIndex((t) => t.id === id);
+    const updatedTodos = [...todos];
+    updatedTodos.splice(index, 1);
+    setTodos(updatedTodos);
+
+    // Approach 2
+
+    const filteredTodos = todos.filter((t) => t.id !== id);
+    setTodos(filteredTodos);
+  };
   return (
     <div className="container">
       <TodoFrom addToDoHandler={addToDoHandler} />
 
-      <TodoList todos={todos} />
+      <TodoList
+        todos={todos}
+        onComplete={completeTodo}
+        onDelete={deleteHandler}
+      />
     </div>
   );
 };

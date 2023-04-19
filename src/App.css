@@ -22,3 +22,16 @@
   border-radius: 5px;
   padding: 20px;
 }
+
+.todo {
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
+}
