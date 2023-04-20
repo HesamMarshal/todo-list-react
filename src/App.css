@@ -31,10 +31,16 @@
   margin: 10px 0;
 }
 
+.todoText {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .completed {
   text-decoration: line-through;
   color: #ccc;
 }
+
 
 input {
   border: 1px solid #ccc;
@@ -55,6 +61,7 @@ input:focus {
   width: 20rem;
   margin-bottom: 20px;
 }
+
 
 .button {
   color: #27AE60;
@@ -88,4 +95,32 @@ input:focus {
 .update {
   color: #fff;
   background-color: #27ae5f67;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header span {
+  margin-left: 10px;
+  display: inline-block;
+  width: 20px;
+  font-size: 14px;
+  height: 20px;
+  background-color: #d0d0d0;
+  color: #27AE60;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

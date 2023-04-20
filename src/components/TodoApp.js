@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TodoFrom from "./TodoFrom";
 import TodoList from "./TodoList";
+import NavBar from "./NavBar";
 
 const TodoApp = () => {
   // todos state
@@ -55,6 +56,7 @@ const TodoApp = () => {
   };
   return (
     <div className="container">
+      <NavBar todos={todos} />
       <TodoFrom submitTodo={addTodo} />
 
       <TodoList
@@ -68,3 +70,6 @@ const TodoApp = () => {
 };
 
 export default TodoApp;
+
+// 1 react-select
+// 2 all, uncompleted, completed
