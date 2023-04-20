@@ -44,5 +44,48 @@ input {
 }
 
 input:focus {
+  border: 2px solid #27AE60;
+  width: 200px;
+}
+
+.formControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20rem;
+  margin-bottom: 20px;
+}
+
+.button {
+  color: #27AE60;
+  background-color: #fff;
   border: 1px solid #27AE60;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.add {
+
+  color: #fff;
+  background-color: #27AE60;
+}
+
+
+.edit {
+  color: #27AE60;
+  border: 1px solid #27AE60;
+
+}
+
+.remove {
+  color: #ec4444;
+  border: 1px solid #ec4444;
+  margin-left: 10px;
+}
+
+.update {
+  color: #fff;
+  background-color: #27ae5f67;
 }

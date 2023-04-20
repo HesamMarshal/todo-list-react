@@ -24,14 +24,21 @@ const TodoFrom = (props) => {
   };
   return (
     <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        value={input}
-        onChange={changeHandle}
-        placeholder={props.edit ? "Update todo" : "Add new todo"}
-        ref={inputRef}
-      />
-      <button type="submit"> {props.edit ? "Update" : "Add"} </button>
+      <div className="formControl">
+        <input
+          type="text"
+          value={input}
+          onChange={changeHandle}
+          placeholder={props.edit ? "Update todo" : "Add new todo"}
+          ref={inputRef}
+        />
+        <button
+          type="submit"
+          className={props.edit ? "button update" : "button add"}
+        >
+          {props.edit ? "Update" : "Add"}
+        </button>
+      </div>
     </form>
   );
 };
