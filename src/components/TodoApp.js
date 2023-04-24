@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import TodoFrom from "./TodoFrom";
 import TodoList from "./TodoList";
 import NavBar from "./NavBar";
@@ -6,8 +7,12 @@ import NavBar from "./NavBar";
 const TodoApp = () => {
   // todos state
   const [todos, setTodos] = useState([]);
-  const [status, setStatus] = useState("All");
+  const [selectedOption, setSelectedOption] = useState("All");
   const [filteredTodos, SetFilteredTodos] = useState([]);
+
+  useEffect(() => {
+    filterTodos(selectedOption.value);
+  }, [todos, selectedOption]);
 
   const addTodo = (input) => {
     const newTodo = {
@@ -19,9 +24,6 @@ const TodoApp = () => {
     setTodos([...todos, newTodo]);
   };
 
-  useEffect(() => {
-    filterTodos(status);
-  }, [todos, status]);
   const completeTodo = (id) => {
     const index = todos.findIndex((t) => t.id === id);
 
@@ -79,8 +81,9 @@ const TodoApp = () => {
   };
 
   const selectHandler = (e) => {
-    filterTodos(e.target.value);
-    setStatus(e.target.value);
+    console.log(e);
+    setSelectedOption(e);
+    filterTodos(e.value);
   };
 
   return (
@@ -88,8 +91,8 @@ const TodoApp = () => {
       <NavBar
         todos={filteredTodos}
         filterTodos={filterTodos}
-        status={status}
-        onSelect={selectHandler}
+        selectedOption={selectedOption}
+        onChange={selectHandler}
       />
       <TodoFrom submitTodo={addTodo} />
 

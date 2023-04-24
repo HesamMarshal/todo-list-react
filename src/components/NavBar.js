@@ -1,6 +1,14 @@
-const NavBar = ({ todos, status, onSelect }) => {
+import Select from "react-select";
+
+const NavBar = ({ todos, selectedOption, onChange }) => {
   const numCompletedTodos = todos.filter((t) => t.isCompleted).length;
   const numUncompletedTodos = todos.filter((t) => !t.isCompleted).length;
+
+  const options = [
+    { value: "all", label: "All" },
+    { value: "completed", label: "Completed" },
+    { value: "unCompleted", label: "UnCompleted" },
+  ];
 
   if (todos.length <= 0) return <h2>Set Your today todos</h2>;
 
@@ -18,11 +26,18 @@ const NavBar = ({ todos, status, onSelect }) => {
         <h3>Uncompleted:</h3>
         <span>{numUncompletedTodos}</span>
       </article>
-      <select onChange={onSelect} value={status}>
+
+      <Select
+        onChange={onChange}
+        options={options}
+        value={selectedOption}
+        className="select"
+      />
+      {/* <select onChange={onSelect} value={status}>
         <option value="all">All</option>
         <option value="completed">Completed</option>
         <option value="unCompleted">UnCompleted</option>
-      </select>
+      </select> */}
     </header>
   );
 };
