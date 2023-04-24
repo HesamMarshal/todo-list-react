@@ -78,13 +78,18 @@ const TodoApp = () => {
     }
   };
 
+  const selectHandler = (e) => {
+    filterTodos(e.target.value);
+    setStatus(e.target.value);
+  };
+
   return (
     <div className="container">
       <NavBar
         todos={filteredTodos}
         filterTodos={filterTodos}
         status={status}
-        setStatus={setStatus}
+        onSelect={selectHandler}
       />
       <TodoFrom submitTodo={addTodo} />
 

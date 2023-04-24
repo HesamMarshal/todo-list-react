@@ -1,13 +1,6 @@
-import { useState } from "react";
-
-const NavBar = ({ todos, filterTodos, status, setStatus }) => {
+const NavBar = ({ todos, status, onSelect }) => {
   const numCompletedTodos = todos.filter((t) => t.isCompleted).length;
   const numUncompletedTodos = todos.filter((t) => !t.isCompleted).length;
-
-  const changeHandler = (e) => {
-    filterTodos(e.target.value);
-    setStatus(e.target.value);
-  };
 
   if (todos.length <= 0) return <h2>Set Your today todos</h2>;
 
@@ -25,7 +18,7 @@ const NavBar = ({ todos, filterTodos, status, setStatus }) => {
         <h3>Uncompleted:</h3>
         <span>{numUncompletedTodos}</span>
       </article>
-      <select onChange={changeHandler} value={status}>
+      <select onChange={onSelect} value={status}>
         <option value="all">All</option>
         <option value="completed">Completed</option>
         <option value="unCompleted">UnCompleted</option>
